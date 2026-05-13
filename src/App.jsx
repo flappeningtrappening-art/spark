@@ -8,6 +8,8 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ConfigScreen from './pages/ConfigScreen';
 import CashierView from './pages/CashierView';
 import CustomerReceipt from './pages/CustomerReceipt';
+import ShopperView from './pages/ShopperView';
+import ScanHandoff from './pages/ScanHandoff';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -35,8 +37,10 @@ const AuthenticatedApp = () => {
   // Render the main app
   return (
     <Routes>
-      <Route path="/" element={<CashierView />} />
+      <Route path="/" element={<ShopperView />} />
       <Route path="/cashier" element={<CashierView />} />
+      <Route path="/shopper" element={<ShopperView />} />
+      <Route path="/handoff" element={<ScanHandoff />} />
       <Route path="/config" element={<ConfigScreen />} />
       <Route path="/receipt" element={<CustomerReceipt />} />
       <Route path="*" element={<PageNotFound />} />

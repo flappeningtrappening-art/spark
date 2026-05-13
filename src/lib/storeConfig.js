@@ -15,6 +15,7 @@ const DEFAULT_CONFIG = {
 
 const STORAGE_KEY = "walmart-cashier-config";
 const CART_KEY = "walmart-cashier-cart";
+const CATALOG_KEY = "spark-product-catalog";
 
 export function loadConfig() {
   const saved = localStorage.getItem(STORAGE_KEY);
@@ -26,6 +27,22 @@ export function loadConfig() {
 
 export function saveConfig(config) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
+}
+
+export function loadCatalog() {
+    const saved = localStorage.getItem(CATALOG_KEY);
+    return saved ? JSON.parse(saved) : {};
+}
+
+export function saveToCatalog(upc, item) {
+    const catalog = loadCatalog();
+    catalog[upc] = { ...item, upc };
+    localStorage.setItem(CATALOG_KEY, JSON.stringify(catalog));
+}
+
+export function getProductByUPC(upc) {
+    const catalog = loadCatalog();
+    return catalog[upc] || null;
 }
 
 export function loadCart() {
