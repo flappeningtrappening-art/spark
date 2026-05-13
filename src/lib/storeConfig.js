@@ -29,6 +29,11 @@ export function saveConfig(config) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
 }
 
+export function resetConfig() {
+    localStorage.removeItem(STORAGE_KEY);
+    return { ...DEFAULT_CONFIG };
+}
+
 export function loadCatalog() {
     const saved = localStorage.getItem(CATALOG_KEY);
     return saved ? JSON.parse(saved) : {};

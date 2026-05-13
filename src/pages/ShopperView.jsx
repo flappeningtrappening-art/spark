@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import BarcodeScanner from "@/components/BarcodeScanner";
 import { loadCart, saveCart, getProductByUPC, saveToCatalog } from "@/lib/storeConfig";
 import { getRandomItem } from "@/lib/walmartItems";
-import { ShoppingBag, Scan, ArrowRight, Trash2, X, PlusCircle } from "lucide-react";
+import { ShoppingBag, Scan, ArrowRight, Trash2, X, PlusCircle, Settings } from "lucide-react";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -90,14 +90,24 @@ export default function ShopperView() {
           </div>
           <h1 className="text-lg font-bold tracking-tight">Scan & Go</h1>
         </div>
-        <Button 
-            variant="ghost" 
-            size="sm" 
-            className="text-white hover:bg-white/20"
-            onClick={() => navigate("/cashier")}
-        >
-            Store Mode
-        </Button>
+        <div className="flex items-center gap-2">
+            <Button 
+                variant="ghost" 
+                size="sm" 
+                className="text-white hover:bg-white/20"
+                onClick={() => navigate("/cashier")}
+            >
+                Register
+            </Button>
+            <Button
+                variant="ghost"
+                size="icon"
+                className="text-white hover:bg-white/20 rounded-lg"
+                onClick={() => navigate("/config")}
+            >
+                <Settings className="w-5 h-5" />
+            </Button>
+        </div>
       </div>
 
       {/* Main Content */}
